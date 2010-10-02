@@ -1,3 +1,9 @@
-I love to store documents for my business and othe things on google
+I love to store documents for my business and other things on google
 documents but I use vi... problems problems problems... so... I'm making
 this!
+
+rename creds.yml.example to creds.yml (and edit)
+
+TODO:
+  * tests
+  * /usr/bin executable (vig) that will save/load/list/etc... from vim
