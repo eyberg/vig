@@ -4,7 +4,7 @@
   documents but I use vi... problems problems problems... so... I'm making
   this!
 
-**Install**
+__Install__
   (install is a bit fucked right now -- we should fix it later)
 
   * rename creds.yml.example to creds.yml (and edit)
