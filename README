@@ -1,8 +1,10 @@
-I love to store documents for my business and other things on google
-documents but I use vi... problems problems problems... so... I'm making
-this!
+**Overview**
 
-INSTALL:
+  I love to store documents for my business and other things on google
+  documents but I use vi... problems problems problems... so... I'm making
+  this!
+
+**Install**
   (install is a bit fucked right now -- we should fix it later)
 
   * rename creds.yml.example to creds.yml (and edit)
@@ -12,9 +14,11 @@ INSTALL:
 
   * sudo ln -s $HOME/vig/vig /usr/bin/vig
 
-What works currently:
+**Usage**
+
+**What Currently Works**
   create_or_update will upload your currently working file to google
   docs upon a ':Gsave'
 
-TODO:
+**TODO**
   * tests
