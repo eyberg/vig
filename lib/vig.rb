@@ -8,7 +8,7 @@ class GoogleConnect
   attr_accessor :auth_token
 
   def initialize
-    creds = YAML::load(File.open('creds.yml'))
+    creds = YAML::load(File.open(File.dirname(__FILE__) + '/../creds.yml'))
 
     user, pass = creds.collect{ |k,v| v }
 

@@ -1,10 +1,21 @@
 **Overview**
 
-  I love to store documents for my business and other things on google
-  documents but I use vi... problems problems problems... so... I'm making
-  this!
+  Want to store your business documents on google docs but hate having
+to jump into their online editor every time you want to view or edit
+something?
+
+  Do it from VIM with a little help from ruby!
+
+**Why**
+  
+  Let's face it, you aren't going to have your business partners sign up
+for github accounts to version your documents and share them with each
+other -- that's what google documents is for. However, if you are like
+me you NEED this utility to access your documents from the shell rather
+than having to pop a browser window.
 
 __Install__
+
   (install is a bit fucked right now -- we should fix it later)
 
   * rename creds.yml.example to creds.yml (and edit)

@@ -1,5 +1,8 @@
 #!/usr/bin/ruby
-require 'vig.rb'
+
+require 'pathname'
+APP_ROOT = File.join(File.dirname(Pathname.new(__FILE__).realpath))
+require APP_ROOT + '/lib/vig.rb'
 
 if !ARGV[0].nil? then
   gc = GoogleConnect.new
