@@ -20,7 +20,7 @@ class GoogleConnect
     http.use_ssl = true
     path = '/accounts/ClientLogin'
     headers = {'Content-Type' => 'application/x-www-form-urlencoded'}
-    blah = "accountType=HOSTED_OR_GOOGLE&Email=#{user}&Passwd=#{pass}&service=cl&source=github-vig-0.1"
+    blah = "accountType=HOSTED_OR_GOOGLE&Email=#{user}&Passwd=#{pass}&service=writely&source=github-vig-0.1"
     resp, data = http.post(path, blah, headers)
 
     unless !resp.code.eql? 200
@@ -33,6 +33,35 @@ class GoogleConnect
     self.auth_token = kvs.last.split("=").last
   end
 
+  # upload new blank document
+  def create_new
+    http = Net::HTTP.new('docs.google.com', 443)
+    http.use_ssl = true
+    path = '/feeds/default/private/full'
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Host' => 'docs.google.com',
+      'GData-Version' => '3.0',
+      'Content-Length' => '287',
+      'Content-Type' => 'application/atom+xml',
+      'Authorization' => "GoogleLogin auth=#{self.auth_token}"
+    }
+
+data =<<END
+<?xml version='1.0' encoding='UTF-8'?>
+<entry xmlns="http://www.w3.org/2005/Atom">
+  <category scheme="http://schemas.google.com/g/2005#kind"
+      term="http://schemas.google.com/docs/2007#document"/>
+  <title>new document</title>
+</entry>
+END
+
+    resp, data = http.post(path, data, headers)
+
+    puts data
+  end
+
+  # list documents
   def list_documents
     url = URI.parse('https://docs.google.com/feeds/default/private/full')
 
@@ -52,4 +81,5 @@ class GoogleConnect
 end
 
 gc = GoogleConnect.new
+#gc.create_new
 gc.list_documents
