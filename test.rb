@@ -61,6 +61,32 @@ END
     puts data
   end
 
+  # update a document
+  def update_document
+
+    document_id = "1672B-caHXmEL2vzKfpb2gHbk07k39td9D02CBk6MqsY"
+
+    http = Net::HTTP.new('docs.google.com', 443)
+    http.use_ssl = true
+    path = '/feeds/default/media/document%3A&document_id'
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Host' => 'docs.google.com',
+      'GData-Version' => '3.0',
+      #'If-Match' => '*',
+      'Content-Length' => '287',
+      'Content-Type' => 'text/plain',
+      'Slug' => 'test.doc',
+      'Authorization' => "GoogleLogin auth=#{self.auth_token}"
+    }
+
+    data ="bah bah bah bah bah bur ran"
+
+    resp, data = http.post(path, data, headers)
+
+    puts data
+  end
+
   # list documents
   def list_documents
     url = URI.parse('https://docs.google.com/feeds/default/private/full')
@@ -82,4 +108,5 @@ end
 
 gc = GoogleConnect.new
 #gc.create_new
-gc.list_documents
+#gc.list_documents
+gc.update_document
