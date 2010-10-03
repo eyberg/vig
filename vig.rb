@@ -62,7 +62,7 @@ END
   end
 
   # update a document
-  def update_document
+  def update_document(name, contents)
 
     document_id = "1672B-caHXmEL2vzKfpb2gHbk07k39td9D02CBk6MqsY"
 
@@ -73,16 +73,13 @@ END
       'Content-Type' => 'application/x-www-form-urlencoded',
       'Host' => 'docs.google.com',
       'GData-Version' => '3.0',
-      #'If-Match' => '*',
-      'Content-Length' => '287',
+      'Content-Length' => contents.length.to_s,
       'Content-Type' => 'text/plain',
-      'Slug' => 'test.doc',
+      'Slug' => name,
       'Authorization' => "GoogleLogin auth=#{self.auth_token}"
     }
 
-    data ="bah bah bah bah bah bur ran"
-
-    resp, data = http.post(path, data, headers)
+    resp, data = http.post(path, contents, headers)
 
     puts data
   end
@@ -105,8 +102,3 @@ END
   end
 
 end
-
-gc = GoogleConnect.new
-#gc.create_new
-#gc.list_documents
-gc.update_document

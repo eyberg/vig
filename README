@@ -2,8 +2,19 @@ I love to store documents for my business and other things on google
 documents but I use vi... problems problems problems... so... I'm making
 this!
 
-rename creds.yml.example to creds.yml (and edit)
+INSTALL:
+  (install is a bit fucked right now -- we should fix it later)
+
+  * rename creds.yml.example to creds.yml (and edit)
+
+  * add the following to your .vimrc:
+    :command Gsave :!vig %:p
+
+  * sudo ln -s $HOME/vig/vig /usr/bin/vig
+
+What works currently:
+  create_or_update will upload your currently working file to google
+  docs upon a ':Gsave'
 
 TODO:
   * tests
-  * /usr/bin executable (vig) that will save/load/list/etc... from vim

@@ -1,0 +1,13 @@
+#!/usr/bin/ruby
+require 'vig.rb'
+
+if !ARGV[0].nil? then
+  gc = GoogleConnect.new
+
+  File.open(ARGV[0]) do |f|
+    @contents = f.read
+  end
+
+  gc.update_document(ARGV[0], @contents)
+
+end
